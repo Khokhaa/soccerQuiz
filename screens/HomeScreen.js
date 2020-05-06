@@ -42,7 +42,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, marginTop: 15 }}>
         <View>
-          <Text style={styles.title}>Pick a Team</Text>
+          <Text style={styles.title}>Pick Team</Text>
         </View>
         <FlatList
           data={QUIZZES}
