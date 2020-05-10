@@ -99,7 +99,6 @@ class QuizScreen extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("update");
     this.setState({ playersRead: false });
     this.setState({ guessing: false });
     let data = [];
