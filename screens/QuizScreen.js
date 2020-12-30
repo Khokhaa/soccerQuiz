@@ -8,7 +8,7 @@ import {
   Button,
   AsyncStorage,
   Text,
-  Alert
+  Alert,
 } from "react-native";
 import PlayersGridItem from "../components/PlayersGridItem.js";
 import Colors from "../constants/Colors.js";
@@ -16,20 +16,17 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton.js";
 
 class QuizScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playerName: "",
-      Players: [],
-      playerVisibility: [],
-      playersRead: false,
-      correctGuess: false,
-      guessing: false,
-      restart: false
-    };
-  }
+  state = {
+    playerName: "",
+    Players: [],
+    playerVisibility: [],
+    playersRead: false,
+    correctGuess: false,
+    guessing: false,
+    restart: false,
+  };
 
-  static navigationOptions = navData => {
+  static navigationOptions = (navData) => {
     const title = navData.navigation.getParam("quizTitle");
 
     const restart = () => {
@@ -53,15 +50,15 @@ class QuizScreen extends React.Component {
                     style: "destructive",
                     onPress: () => {
                       restart();
-                    }
+                    },
                   },
-                  { text: "Cancel", style: "default" }
+                  { text: "Cancel", style: "default" },
                 ]
               );
             }}
           />
         </HeaderButtons>
-      )
+      ),
     };
   };
 
@@ -115,7 +112,7 @@ class QuizScreen extends React.Component {
     }
   }
 
-  playerGuessHandler = guess => {
+  playerGuessHandler = (guess) => {
     const list = [];
     for (const player in this.state.Players) {
       if (
@@ -156,14 +153,14 @@ class QuizScreen extends React.Component {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-around",
-            marginVertical: 10
+            marginVertical: 10,
           }}
         >
           <TextInput
             placeholder="Enter player name..."
             value={this.state.playerName}
             style={styles.inputContainer}
-            onChangeText={text => {
+            onChangeText={(text) => {
               this.setState({ guessing: true });
               this.setState({ playerName: text });
             }}
@@ -186,7 +183,7 @@ class QuizScreen extends React.Component {
         </View>
         <FlatList
           data={this.state.Players}
-          keyExtractor={item => item.playerNumber}
+          keyExtractor={(item) => item.playerNumber}
           renderItem={this.renderPlayer}
           numColumns={2}
         />
@@ -201,13 +198,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderWidth: 1,
     borderRadius: 10,
-    width: "70%"
+    width: "70%",
   },
   title: {
     fontSize: 20,
     textAlign: "center",
-    fontFamily: "roboto-regular"
-  }
+    fontFamily: "roboto-regular",
+  },
 });
 
 export default QuizScreen;
